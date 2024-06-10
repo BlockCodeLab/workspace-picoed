@@ -2,6 +2,7 @@ import featureImage from './feature.png';
 
 export default {
   preview: true,
+  sortIndex: 102,
   image: featureImage,
   name: 'ELECFREAKS Pico:ed V2',
   description: 'Small board, endless possibilities.',
