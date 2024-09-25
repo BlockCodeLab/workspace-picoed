@@ -6,7 +6,7 @@ export default {
   image: featureImage,
   name: 'ELECFREAKS Pico:ed V2',
   description: 'Small board, endless possibilities.',
-  collaborator: 'Yeqin Gong',
+  collaborator: 'ELECFREAKS',
   blocksRequired: true,
 
   // l10n
@@ -14,12 +14,12 @@ export default {
     en: {
       name: 'ELECFREAKS Pico:ed V2',
       description: 'Small board, endless possibilities.',
-      collaborator: 'Yeqin Gong',
+      collaborator: 'ELECFREAKS',
     },
     'zh-Hans': {
       name: '恩孚科技 Pico:ed V2',
       description: '小小教育开发板，创造无限大可能。',
-      collaborator: '龚业勤',
+      collaborator: '恩孚科技',
     },
   },
 };
