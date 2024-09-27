@@ -1,4 +1,4 @@
-import { javascriptGenerator } from '@blockcode/blocks-player';
+import { javascriptGenerator } from './generator';
 
 javascriptGenerator['sensing_keyoptions'] = (block) => {
   const keyCode = block.getFieldValue('KEY_OPTION');

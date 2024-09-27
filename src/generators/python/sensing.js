@@ -1,4 +1,4 @@
-import { pythonGenerator } from '@blockcode/workspace-blocks/app';
+import { pythonGenerator } from './generator';
 
 pythonGenerator['sensing_keyoptions'] = (block) => {
   const keyCode = block.getFieldValue('KEY_OPTION');

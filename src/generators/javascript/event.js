@@ -1,8 +1,9 @@
-import { javascriptGenerator } from '@blockcode/blocks-player';
+import { javascriptGenerator } from './generator';
+
+const EVENT_CALLBACK = `async (done) => {\ndo {\n/* code */} while (false);\ndone();\n}`;
 
 javascriptGenerator['event_whenkeypressed'] = (block) => {
-  let code = '';
   const keyCode = block.getFieldValue('KEY_OPTION');
-  code += `runtime.on('keypressed_${keyCode}', async () => {/* nextCode */});\n`;
+  const code = `runtime.on('keypressed_${keyCode}', ${EVENT_CALLBACK});\n`;
   return code;
 };

@@ -1,7 +1,7 @@
-import { pythonGenerator } from '@blockcode/workspace-blocks/app';
+import { pythonGenerator } from './generator';
 
 pythonGenerator['event_whenkeypressed'] = (block) => {
   const keyCode = block.getFieldValue('KEY_OPTION');
-  const hatCode = pythonGenerator.hatToCode('key_pressed');
-  return `${hatCode}when_key_pressed("${keyCode}",${pythonGenerator.HAT_FUNCTION_PLACEHOLDER})\n`;
+  const branchCode = pythonGenerator.eventToCode('key_pressed');
+  return `@when_keypressed("${keyCode}")\n${branchCode}`;
 };

@@ -1,6 +1,7 @@
 import { useLocale, useEditor, exportFile } from '@blockcode/core';
 import { codeTab } from '@blockcode/workspace-blocks/app';
-import { javascriptGenerator } from '@blockcode/blocks-player';
+import { javascriptGenerator } from '../../generators/javascript';
+import { pythonGenerator } from '../../generators/python';
 
 import makeToolboxXML from '../../lib/make-toolbox-xml';
 
@@ -48,8 +49,14 @@ export default function BlocksEditor() {
   const toolbox = makeToolboxXML(DEFAULT_SOUND_NAME);
 
   const handleLoadExtension = ({ id: extensionId, blocks }) => {
-    blocks.forEach(({ id: blockId, player }) => {
-      javascriptGenerator[`${extensionId}_${blockId}`] = player ? player.bind(javascriptGenerator) : () => '';
+    // generate javascript for player
+    blocks.forEach((block) => {
+      const blockId = `${extensionId}_${block.id.toLowerCase()}`;
+      if (block.vm) {
+        javascriptGenerator[blockId] = block.vm.bind(javascriptGenerator);
+      } else {
+        javascriptGenerator[blockId] = () => '';
+      }
     });
   };
 
@@ -58,6 +65,7 @@ export default function BlocksEditor() {
       xml={picoed.xml}
       toolbox={toolbox}
       messages={messages}
+      generator={pythonGenerator}
       onExtensionsFilter={() => ['blocks', 'dupont']}
       onLoadExtension={handleLoadExtension}
     />

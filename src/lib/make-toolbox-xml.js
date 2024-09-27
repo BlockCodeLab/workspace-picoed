@@ -1,12 +1,9 @@
-import { ScratchBlocks, makeToolboxXML, blockSeparator, categorySeparator } from '@blockcode/blocks-editor';
+import { makeToolboxXML, blockSeparator, categorySeparator } from '@blockcode/blocks-editor';
 
 import '../blocks/events';
 import '../blocks/looks';
 import '../blocks/sensing';
 import '../blocks/sound';
-
-import '../generators/javascript';
-import '../generators/python';
 
 const xmlEscape = (unsafe) => {
   return unsafe.replace(/[<>&'"]/g, (c) => {

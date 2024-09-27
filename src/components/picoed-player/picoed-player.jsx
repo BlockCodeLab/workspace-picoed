@@ -1,6 +1,8 @@
 import { useState } from 'preact/hooks';
 import { useEditor } from '@blockcode/core';
+import { ScratchBlocks } from '@blockcode/blocks-editor';
 import { BlocksPlayer, paperCore } from '@blockcode/blocks-player';
+import { javascriptGenerator } from '../../generators/javascript';
 
 import Runtime from './runtime';
 import generate from './generate';
@@ -20,9 +22,8 @@ export function PicoedPlayer({ playing, onRequestStop }) {
     if (playing) {
       if (!currentRuntime) {
         // start
-        const code = generate(picoed.script);
-        const runtime = new Runtime(code, onRequestStop);
-        setCurrentRuntime(runtime);
+        const runtime = new Runtime(onRequestStop);
+        runtime.launch(generate(picoed.script));
 
         picoedItems.A.onClick = () => {
           runtime.emit('keypressed_a');
@@ -43,10 +44,20 @@ export function PicoedPlayer({ playing, onRequestStop }) {
           }
         };
         document.addEventListener('keypress', handleKeyPress);
+
+        const workspace = ScratchBlocks.getMainWorkspace();
+        if (workspace) {
+          workspace.addChangeListener(onRequestStop);
+        }
+        setCurrentRuntime(runtime);
       }
     } else {
       if (currentRuntime) {
         // stop
+        const workspace = ScratchBlocks.getMainWorkspace();
+        if (workspace) {
+          workspace.removeChangeListener(onRequestStop);
+        }
         currentRuntime.stop();
         setCurrentRuntime(false);
         picoedItems.A.onClick = null;
@@ -148,6 +159,7 @@ export function PicoedPlayer({ playing, onRequestStop }) {
     <BlocksPlayer
       width="420px"
       height="320px"
+      javascriptGenerator={javascriptGenerator}
       onSetup={handleSetup}
     />
   );

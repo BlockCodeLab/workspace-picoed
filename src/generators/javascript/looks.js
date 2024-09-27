@@ -1,4 +1,4 @@
-import { javascriptGenerator } from '@blockcode/blocks-player';
+import { javascriptGenerator } from './generator';
 
 javascriptGenerator['looks_led_state'] = (block) => {
   let code = '';
