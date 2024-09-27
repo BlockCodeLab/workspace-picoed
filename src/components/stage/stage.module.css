@@ -3,7 +3,7 @@
 }
 
 .stage {
-  width: calc(420px + 2px);
+  width: calc(380px + 2px);
   height: calc(320px + 2px);
   border: 1px solid var(--ui-black-transparent);
   border-radius: var(--space);

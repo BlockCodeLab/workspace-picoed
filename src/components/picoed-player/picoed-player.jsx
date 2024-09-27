@@ -79,7 +79,7 @@ export function PicoedPlayer({ playing, onRequestStop }) {
     // led
     new paperCore.Path.Circle({
       name: 'led',
-      center: [176, 77],
+      center: [156, 77],
       radius: 3,
       fillColor: 'rgba(0, 0, 0, 0.15)',
       shadowBlur: 8,
@@ -90,7 +90,7 @@ export function PicoedPlayer({ playing, onRequestStop }) {
       for (let y = 0; y < 7; y++) {
         new paperCore.Path.Rectangle({
           name: `${x},${y}`,
-          point: [103 + x * 12.9, 124 + y * 12.9],
+          point: [83 + x * 12.9, 124 + y * 12.9],
           size: [10, 6],
           fillColor: 'white',
           rotation: -45,
@@ -125,12 +125,12 @@ export function PicoedPlayer({ playing, onRequestStop }) {
     };
     const buttonA = new paperCore.Path.Ellipse({
       name: `A`,
-      point: [75.3, 156],
+      point: [55.3, 156],
       ...buttonProps,
     });
     const buttonB = new paperCore.Path.Ellipse({
       name: `B`,
-      point: [332.8, 156],
+      point: [312.8, 156],
       ...buttonProps,
     });
     document.addEventListener('keydown', ({ key }) => {
@@ -157,7 +157,7 @@ export function PicoedPlayer({ playing, onRequestStop }) {
 
   return (
     <BlocksPlayer
-      width="420px"
+      width="380px"
       height="320px"
       javascriptGenerator={javascriptGenerator}
       onSetup={handleSetup}
