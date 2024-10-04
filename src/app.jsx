@@ -8,32 +8,19 @@ import Sidebar from './components/sidebar/sidebar';
 import defaultProject from './lib/default-project';
 
 /* languages */
-import en from './l10n/en.yaml';
-import zhHans from './l10n/zh-hans.yaml';
+import locales from './l10n';
 
-export default function PicoedBlocksWorkspace({ addLocaleData, createLayout, openProject, project }) {
+export default function PicoedBlocksWorkspace({ addLocaleData, openProject }) {
   addLocaleData(blocksLocales);
+  addLocaleData(locales);
 
-  addLocaleData({
-    en,
-    'zh-Hans': zhHans,
-  });
-
-  const createDefaultProject = (project) => {
-    project = project ?? defaultProject;
-    openProject(
-      Object.assign(
-        {
-          selectedFileId: project.fileList[0].id,
-        },
-        project,
-      ),
-    );
+  const createProject = () => {
+    openProject(Object.assign(defaultProject));
   };
-  createDefaultProject(project);
+  createProject();
 
-  createLayout({
-    mainMenu: makeMainMenu({ createDefaultProject }),
+  return {
+    mainMenu: makeMainMenu({ createProject }),
 
     tabs: [
       {
@@ -54,5 +41,5 @@ export default function PicoedBlocksWorkspace({ addLocaleData, createLayout, ope
     tutorials: true,
 
     canEditProjectName: true,
-  });
+  };
 }

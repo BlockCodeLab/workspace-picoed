@@ -51,7 +51,7 @@ export default function BlocksEditor() {
   const handleLoadExtension = ({ id: extensionId, blocks }) => {
     // generate javascript for player
     blocks.forEach((block) => {
-      const blockId = `${extensionId}_${block.id.toLowerCase()}`;
+      const blockId = `${extensionId}_${block.id}`;
       if (block.vm) {
         javascriptGenerator[blockId] = block.vm.bind(javascriptGenerator);
       } else {
