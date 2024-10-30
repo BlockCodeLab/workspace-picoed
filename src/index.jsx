@@ -1,7 +1,7 @@
 import featureImage from './feature.png';
 
 export default {
-  preview: true,
+  hidden: true,
   sortIndex: 105,
   image: featureImage,
   name: 'ELECFREAKS Pico:ed V2',
